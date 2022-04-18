@@ -1,0 +1,6 @@
+
+<div class="d-flex justify-content-center">
+    <ul  class="d-flex flex-column align-items-center">
+        <li class="my-3" *ngFor="let item of users"><button class="btn btn-outline-dark btn-lg" (click)="GetUserDetails(item.id)">{{item.name}}</button></li>
+    </ul>
+</div>
