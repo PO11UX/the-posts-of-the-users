@@ -40,9 +40,10 @@
             </a>
           </li>
           </ul>
-          <button class="btn btn-outline-dark me-3" (click)="GetPost(userDetails['id'])">GetPost</button>
+          <button class="btn btn-outline-dark me-3" (click)="GotoPosts(userDetails['id'])">GetPost</button>
     </div>
     <div class="card-body">
+      <!-- Basic Info -->
         <ng-container  *ngIf="tabIndex === 0">
 
             <div class="mx-3">
@@ -109,6 +110,7 @@
                 </div>
             </div>
         </ng-container>
+         <!-- Address -->
         <ng-container  *ngIf="tabIndex === 1">
 
             <div class="mx-3">
@@ -143,6 +145,7 @@
                 </div>
             </div>
         </ng-container>
+         <!-- Company -->
         <ng-container  *ngIf="tabIndex === 2">
 
             <div class="mx-3">

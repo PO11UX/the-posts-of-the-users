@@ -10,22 +10,30 @@ import { DictionaryService } from '../dictionary.service';
 export class PostsComponent implements OnInit {
 
   constructor(private dictionaryService: DictionaryService, private activeRoute: ActivatedRoute, private route : Router ) { }
+   //user id (taken from query)
+  id: number = this.activeRoute.snapshot.queryParams['id'];
 
-  id: number = this.activeRoute.snapshot.queryParams['id']
-  posts: any = []
-  loading: boolean = true
+  posts: any = [];
+  //use loading status for loading spinner 
+  loading: boolean = true;
+
   ngOnInit(): void {
-   this.getPosts()
-  }
 
+   this.getPosts();
+
+  }
+  //Get user posts 
   getPosts(){
     this.dictionaryService.GetPosts(this.id).subscribe(
       (data)=>{
+
         this.posts = data;
+
         this.loading = false;
       }
     )
   }
+   //navigate to the previous page
   back(){
     this.route.navigate(['user-details'], { queryParams: { id: this.id } })
   }

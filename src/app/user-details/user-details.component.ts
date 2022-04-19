@@ -10,27 +10,36 @@ import { DictionaryService } from '../dictionary.service';
 export class UserDetailsComponent implements OnInit {
 
   constructor(public dictionaryService: DictionaryService, private activeRoute: ActivatedRoute, private route : Router) { }
+  //use tabIndex to stitch nav-items (Basic Info, Address, Company)
   tabIndex: number = 0;
-  id: number = this.activeRoute.snapshot.queryParams['id']
-  loading: boolean = true
-  userDetails: any = []
+  //user id (taken from query)
+  id: number = this.activeRoute.snapshot.queryParams['id'];
+  //use loading status for loading spinner 
+  loading: boolean = true;
+
+  userDetails: any = [];
+
   ngOnInit(): void {
-      
-      this.getUserDetails()
-    
+
+    this.getUserDetails();
+
   }
-  
+  //get specific user data
   getUserDetails(){
     this.dictionaryService.GetUserDetails(this.id).subscribe(
       (data)=>{
         this.userDetails = data;
+
         this.loading = false;
       }
     )
   }
-  GetPost(id: number){
+
+  //navigate to the user's posts page 
+  GotoPosts(id: number){
     this.route.navigate(['posts'], { queryParams: { id: id } })
   }
+  //navigate to the previous page
   back(){
     this.route.navigate(['users'])
   }

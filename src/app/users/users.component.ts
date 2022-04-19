@@ -12,19 +12,20 @@ export class UsersComponent implements OnInit {
   constructor(private dictionaryService: DictionaryService,private route: Router) { }
 
   users: any = [];
+  
   ngOnInit(): void {
      this.getUsers()
   }
-
+  //Get user names 
   getUsers(){
     this.dictionaryService.GetUsers().subscribe(
       (data)=>{
         this.users = data;
-        console.log(data);
-        
       })
   }
-  GetUserDetails(id: number){
+
+  //Navigate to specific user details page
+  GoToUserDetails(id: number){
     this.route.navigate(['user-details'], { queryParams: { id: id } })
   }
 
